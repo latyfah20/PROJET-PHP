@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculatrice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            width: 300px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 10px);
+            padding: 8px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border: 1px solid #704747;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #2d86a1;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #963d14;
+        }
+
+        #resultats {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #4b1616;
+            background-color: #9ce7f1;
+        }
+    </style>
+    <script>
+        function calculer() {
+            let nombre1 = parseFloat(document.getElementById('nombre1').value);
+            let nombre2 = parseFloat(document.getElementById('nombre2').value);
+
+            if (isNaN(nombre1) || isNaN(nombre2)) {
+                alert("Veuillez saisir des nombres valides.");
+                return;
+            }
+
+            if (nombre2 === 0) {
+                alert("Division par zéro impossible.");
+                return;
+            }
+
+            let somme = nombre1 + nombre2;
+            let produit = nombre1 * nombre2;
+            let division = nombre1 / nombre2;
+            let soustraction = nombre1 - nombre2;
+
+            document.getElementById('resultats').innerHTML = `
+                Somme : ${somme}<br>
+                Produit : ${produit}<br>
+                Division : ${division}<br>
+                Soustraction : ${soustraction}
+            `;
+        }
+    </script>
+</head>
+<body>
+    <h1>Calculatrice</h1>
+    <form>
+        <label for="nombre1">Nombre 1 :</label>
+        <input type="text" id="nombre1" name="nombre1"><br><br>
+
+        <label for="nombre2">Nombre 2 :</label>
+        <input type="text" id="nombre2" name="nombre2"><br><br>
+
+        <button type="button" onclick="calculer()">Calculer</button>
+    </form>
+
+    <div id="resultats"></div>
+</body>
+</html>
